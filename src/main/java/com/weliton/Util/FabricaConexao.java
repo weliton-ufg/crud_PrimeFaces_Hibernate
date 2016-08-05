@@ -23,5 +23,6 @@ public class FabricaConexao {
 	}
 	public void fecharConexão(@Disposes EntityManager fabrica){
 		fabrica.close();
+		System.out.println("Conexão fechada");
 	}
 }

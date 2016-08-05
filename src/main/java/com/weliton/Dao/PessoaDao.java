@@ -5,7 +5,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 import com.weliton.Modelo.Pessoa;
-import com.weliton.Util.FabricaConexao;
 
 public class PessoaDao {
 	@Inject
@@ -14,8 +13,9 @@ public class PessoaDao {
 	public Pessoa adicionar(Pessoa pessoa){
 		EntityTransaction trx= fabrica.getTransaction(); 
 		trx.begin();
-		
+			fabrica.merge(pessoa);
 		trx.commit();
+		
 		return pessoa;
 		
 	}
