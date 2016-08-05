@@ -9,7 +9,7 @@
 		<h1 class="aw-page-title">Novo Contato</h1>
 
 
-	<!-- 	<div class="ui-grid ui-grid-responsive">
+		<!-- 	<div class="ui-grid ui-grid-responsive">
 			<div class="ui-grid-col-3">
 				<h:inputHidden />
 			</div>
@@ -20,35 +20,40 @@
 			</div>
 
 		</div> -->
-		<p:messages autoUpdate="true" closable="true"/>
-		<h:form>
-		
+		<f:metadata>
+		<!-- 	<f:event listener="#{contatoBean.Salvar}" type="preRenderView"></f:event> -->
+		</f:metadata>
+		<p:messages autoUpdate="true" closable="true" />
+	
+
 			<p:fieldset legend="Novo" toggleable="true" toggleSpeed="500">
-				
-					<h:form id="frm">
-					<p:growl showDetail="true" sticky="true" autoUpdate="true"  /> 
-					
-						<p:panelGrid columns="2" style="margin: auto; width: 60%">
-							<p:outputLabel value="Nome" />
-							<p:inputText styleClass="ui-grid-col-12" required="true" requiredMessage="Informe o Nome"/>
-							<p:outputLabel value="APelido" />
-							<p:inputText styleClass="ui-grid-col-12"/>
-							<p:outputLabel value="Telefone" />
-							<p:inputMask mask="(99)99999-9999" styleClass="ui-grid-col-12" />
-							<p:outputLabel value="E-mail" />
-							<p:inputText styleClass="ui-grid-col-12" />
-						
-							<h:inputHidden value="" />
-							
-							<h:panelGroup >
-								<p:commandButton value="Salvar"  />
-								<p:commandButton value="Limpar" ajax="false"/>
-							</h:panelGroup>
-						</p:panelGrid>
-					</h:form>
+
+				<h:form id="formulario">	
+					<p:panelGrid columns="2" style="margin: auto; width: 60%">
+						<p:outputLabel value="Nome" />
+						<p:inputText styleClass="ui-grid-col-12"
+							value="#{contatoBean.pessoa.nome}" required="true"
+							requiredMessage="Informe o Nome" />
+						<p:outputLabel value="APelido" />
+						<p:inputText styleClass="ui-grid-col-12"
+							value="#{contatoBean.pessoa.apelido}" />
+						<p:outputLabel value="Telefone" />
+						<p:inputMask mask="(99)99999-9999" styleClass="ui-grid-col-12"
+							value="#{contatoBean.pessoa.telefone}" />
+						<p:outputLabel value="E-mail" />
+						<p:inputText styleClass="ui-grid-col-12"
+							value="#{contatoBean.pessoa.email}" />
+						<h:inputHidden  />
+						<h:panelGroup>
+							<div align="center">
+								<p:commandButton value="Salvar"
+									action="#{contatoBean.Salvar}" update="formulario" />
+								<p:button value="Limpar" style="margin-left:5px" />
+							</div>
+						</h:panelGroup>
+					</p:panelGrid>
+				</h:form>
 			</p:fieldset>
-		</h:form>
-
+	
 	</ui:define>
-
 </ui:composition>
