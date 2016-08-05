@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:facet name="first">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+	</f:facet>
+
+	<title>Agenda</title>
+
+	<h:outputStylesheet library="weliton" name="styles/custom.css" />
+	<h:outputStylesheet library="weliton" name="styles/layout.css" />
+	<h:outputStylesheet library="weliton" name="styles/components.css" />
+
+	<h:outputScript target="body" library="primefaces"
+		name="jquery/jquery.js" />
+	<h:outputScript target="body" library="weliton"
+		name="javascripts/app.js" />
+</h:head>
+
+<h:body>
+
+	<!-- 	<header class="aw-topbar">
+		<a href="#" class="aw-toggle  js-toggle"><i class="fa  fa-bars"></i></a>
+	</header>   -->
+
+<header class="aw-topbar">
+<a href="#" class="aw-toggle  js-toggle"  style="float: right;"><i class="fa  fa-bars"></i></a>
+</header>	
+
+
+
+
+	<aside class="aw-sidebar  js-sidebar">
+		<ui:include src="Menu.xhtml" />
+	</aside>
+
+	<section class="aw-content  js-content">
+		<ui:insert name="content" />
+	</section>
+	<h:form>
+		<p:dock position="bottom" rendered="true" itemWidth="50">
+			<p:menuitem value=" Home"
+				icon="http://icons.iconarchive.com/icons/laurent-baumann/blend/256/Folder-Home-icon.png"
+				url="#" />
+			<p:menuitem value=" Portifolio"
+				icon="http://www.primefaces.org/showcase/resources/demo/images/dock/portfolio.png;jsessionid=15nnrt7jgxxc193yhwz0j1c8g"
+				url="#" />
+			<p:menuitem value=" E-mail"
+				icon="http://www.e10egency.com/e10egency_com/bank/pageimages/email-icon.png"
+				url="#" />
+			<p:menuitem value="Videos"
+				icon="http://www.primefaces.org/showcase/resources/demo/images/dock/video.png;jsessionid=15nnrt7jgxxc193yhwz0j1c8g"
+				url="#" />
+			<p:menuitem value=" Musicas"
+				icon="http://1.bp.blogspot.com/-7n_-TFn8koo/UUyxzrDp-VI/AAAAAAAAUQk/gMIKVOSX_Iw/s1600/pasta-musica.png"
+				url="#" />
+			<p:menuitem value=" Contatos"
+				icon="http://www.convertte.com.br/wp-content/uploads/2013/05/dicas-para-whatsapp.jpg"
+				url="#" />
+
+		</p:dock>
+	</h:form>
+
+</h:body>
+
+</html>
