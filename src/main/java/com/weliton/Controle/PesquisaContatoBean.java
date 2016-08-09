@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -12,11 +12,9 @@ import com.weliton.Dao.PessoaDao;
 import com.weliton.Modelo.Pessoa;
 import com.weliton.Util.FacesUtil;
 
-
-
 @Named
-@RequestScoped
-public class ContatoBean implements Serializable{
+@ViewScoped
+public class PesquisaContatoBean implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	@Inject
@@ -24,19 +22,8 @@ public class ContatoBean implements Serializable{
 	@Inject
 	private PessoaDao pessoaDao;
 	private List<Pessoa> pessoas=new ArrayList<>();
-	
-	public ContatoBean() {
-		Limpar();
-	}
 
-	public void Salvar(){
-		System.out.println("nome: "+pessoa.getNome());
-		pessoa=pessoaDao.adicionar(pessoa);
-		
-		FacesUtil.addInfoNessage("Contato salvo com Sucesso!");
-		Limpar();
-		//buscarContatos();
-	}
+	private Pessoa pessoaSelecionada;
 	
 	public void buscarContatos(){
 		pessoas=pessoaDao.buscarContatos();
@@ -45,12 +32,18 @@ public class ContatoBean implements Serializable{
 	public void buscarPorId(){
 		//pessoaDao.buscarPorId(pessoa);
 	}
-	public boolean isEditando(){
-		return pessoa.getId()!=null;
-	}
+	public void excluir(){
+		try {
 	
-	public void Limpar(){
-		pessoa=new Pessoa();
+			pessoaDao.excluir(pessoaSelecionada);
+			pessoas.remove(pessoaSelecionada);
+			//buscarContatos();
+			FacesUtil.addInfoMessage("Contato "+pessoaSelecionada.getNome()+ " Excluído com sucesso!");
+			
+		} catch (Exception e) {
+			FacesUtil.addErroMessage("Erro ao excluir o Contato "+pessoaSelecionada.getNome());
+		}
+		
 	}
 	
 	public Pessoa getPessoa() {
@@ -68,5 +61,13 @@ public class ContatoBean implements Serializable{
 
 	public void setPessoas(List<Pessoa> pessoas) {
 		this.pessoas = pessoas;
+	}
+
+	public Pessoa getPessoaSelecionada() {
+		return pessoaSelecionada;
+	}
+
+	public void setPessoaSelecionada(Pessoa pessoaSelecionada) {
+		this.pessoaSelecionada = pessoaSelecionada;
 	}
 }

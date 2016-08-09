@@ -4,9 +4,9 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/templates/Layout.xhtml">
-	<ui:define name="titulo">#{contatoBean.editando ? 'Edição de Contato': 'Novo Contato'}</ui:define>
+	<ui:define name="titulo">#{novoContatoBean.editando ? 'Edição de Contato': 'Novo Contato'}</ui:define>
 	<ui:define name="content">
-		<h1 class="aw-page-title">#{contatoBean.editando ? 'Edição de Contato': 'Novo Contato'}</h1>
+		<h1 class="aw-page-title">#{novoContatoBean.editando ? 'Edição de Contato': 'Novo Contato'}</h1>
 
 
 		<!-- 	<div class="ui-grid ui-grid-responsive">
@@ -23,7 +23,7 @@
 		<f:metadata>
 		<!-- 	<f:event listener="#{contatoBean.Salvar}" type="preRenderView"></f:event> -->
 			<f:viewParam name="dummy" />
-			<f:viewParam name="contato" value="#{contatoBean.pessoa}"/>
+			<f:viewParam name="contato" value="#{novoContatoBean.pessoa}"/>
 		</f:metadata>
 		<p:messages autoUpdate="true" closable="true" />
 	
@@ -34,22 +34,22 @@
 					<p:panelGrid columns="2" style="margin: auto; width: 60%">
 						<p:outputLabel value="Nome" for="nome"/>
 						<p:inputText id="nome" styleClass="ui-grid-col-12"
-							value="#{contatoBean.pessoa.nome}" required="true"
+							value="#{novoContatoBean.pessoa.nome}" required="true"
 							requiredMessage="Informe o Nome" />
 						<p:outputLabel value="APelido" for="apelido" />
 						<p:inputText styleClass="ui-grid-col-12" id="apelido"
-							value="#{contatoBean.pessoa.apelido}" />
+							value="#{novoContatoBean.pessoa.apelido}" />
 						<p:outputLabel value="Telefone" for="telefone"/>
 						<p:inputMask mask="(99)99999-9999" styleClass="ui-grid-col-12" id="telefone"
-							value="#{contatoBean.pessoa.telefone}" />
+							value="#{novoContatoBean.pessoa.telefone}" />
 						<p:outputLabel value="E-mail" for="email"/>
 						<p:inputText styleClass="ui-grid-col-12" id="email"
-							value="#{contatoBean.pessoa.email}" />
+							value="#{novoContatoBean.pessoa.email}" />
 						<h:inputHidden  />
 						<h:panelGroup>
 							<div align="center">
 								<p:commandButton value="Salvar" styleClass="btn btn-outline btn-primary"
-									action="#{contatoBean.Salvar}" update="formulario" />
+									action="#{novoContatoBean.Salvar}" update="formulario" ajax="false"/>
 								<p:button value="Limpar" style="margin-left:5px" styleClass="btn btn-outline btn-warning"  />
 							</div>
 						</h:panelGroup>

@@ -1,0 +1,81 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/Layout.xhtml">
+
+	<ui:define name="content">
+		<h1 class="aw-page-title">Buscar Contatos</h1>
+
+
+		<!-- 	<div class="ui-grid ui-grid-responsive">
+			<div class="ui-grid-col-3">
+				<h:inputHidden />
+			</div>
+
+			<div class="ui-grid-col-5"></div>
+			<div class="ui-grid-col-3" style="margin: auto;">
+				<h:inputHidden></h:inputHidden>
+			</div>
+
+		</div> -->
+		<p:separator />
+		<f:metadata>
+			<f:viewParam name="dammy" />
+			<f:event listener="#{pesquisaContatoBean.buscarContatos}"
+				type="preRenderView"></f:event>
+		</f:metadata>
+		<p:messages autoUpdate="true" closable="true" />
+		<h:form id="formprincipal">
+			<p:dataTable var="pessoa" paginator="true" rows="8"
+				rowsPerPageTemplate="3,5,8" paginatorPosition="bottom"
+				value="#{pesquisaContatoBean.pessoas}"
+				emptyMessage="Não existe contatos cadastrados " reflow="true">
+				<p:column headerText="Id" width="70">
+					<h:outputText value="#{pessoa.id}" />
+				</p:column>
+				<p:column headerText="Nome" width="250">
+					<h:outputText value="#{pessoa.nome}" />
+				</p:column>
+
+				<p:column headerText="Telefone" width="120">
+					<h:outputText value="#{pessoa.telefone}" />
+				</p:column>
+
+				<p:column headerText="Email" width="300">
+					<h:outputText value="#{pessoa.email}" />
+				</p:column>
+
+				<p:column headerText="Apelido" width="140">
+					<h:outputText value="#{pessoa.apelido}" />
+				</p:column>
+				
+				<p:column headerText="*" width="72">
+					<p:button outcome="novoContato" id="btnEditar" styleClass="btn btn-outline btn-warning" icon="ui-icon-pencil"
+						title="Editar">
+						<f:param name="contato" value="#{pessoa.id}" />
+					</p:button>
+					 <p:tooltip id="toolTipEditar" for="btnEditar" value="Editar" showEffect="clip" position="left"/>
+               		
+      
+					<p:commandButton styleClass=" btn btn-outline btn-danger " id="btnExcluir" process="@this" update=":formprincipal"
+						icon="ui-icon-trash" title="Excluir" action="#{pesquisaContatoBean.excluir}"  >
+						<f:setPropertyActionListener value="#{pessoa}" target="#{pesquisaContatoBean.pessoaSelecionada}" />	
+						<p:confirm header="Confirmation"  message="Deseja realmente excluir #{pesquisaContatoBean.pessoaSelecionada.nome} ?" icon="ui-icon-alert" />
+					</p:commandButton>
+					<p:tooltip id="toolTipExcluir" for="btnExcluir" value="Excluir" showEffect="clip"  position="left"/>
+					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade" id="confirme">
+        				<p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"  />
+       					<p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    				</p:confirmDialog>					
+		            
+				</p:column>
+			</p:dataTable>
+				
+		</h:form>
+		
+		 
+	</ui:define>
+
+</ui:composition>

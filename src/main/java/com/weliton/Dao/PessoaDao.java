@@ -3,11 +3,13 @@ package com.weliton.Dao;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 import com.weliton.Modelo.Pessoa;
+import com.weliton.Util.FacesUtil;
 
 public class PessoaDao implements Serializable {
 
@@ -31,10 +33,19 @@ public class PessoaDao implements Serializable {
 	
 	}
 
-
 	public Pessoa pessoaPorID(Long id){
 		return fabrica.find(Pessoa.class, id);
 		
+	}
+	
+	public void excluir(Pessoa pessoa){
+		EntityTransaction trx= fabrica.getTransaction(); 
+		pessoa=pessoaPorID(pessoa.getId());	
+		trx.begin();
+		fabrica.remove(pessoa);
+		fabrica.flush();
+		trx.commit();
+	
 	}
 
 }

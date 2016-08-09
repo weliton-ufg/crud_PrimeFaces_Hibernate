@@ -3,6 +3,8 @@ package com.weliton.Modelo;
 import java.io.Serializable;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNullableByDefault;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -46,6 +48,7 @@ public class Pessoa implements Serializable {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+	//@Column (name="email",length=200,nullable=false)
 	public String getEmail() {
 		return email;
 	}
