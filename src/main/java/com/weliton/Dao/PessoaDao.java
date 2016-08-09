@@ -1,5 +1,7 @@
 package com.weliton.Dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -17,6 +19,18 @@ public class PessoaDao {
 		trx.commit();
 		
 		return pessoa;
+		
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Pessoa> buscarContatos() {
+		return fabrica.createQuery("from Pessoa").getResultList();
+	
+	}
+
+
+	public Pessoa pessoaPorID(Long id){
+		return fabrica.find(Pessoa.class, id);
 		
 	}
 

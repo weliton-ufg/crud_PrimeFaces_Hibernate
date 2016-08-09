@@ -20,25 +20,45 @@
 			</div>
 
 		</div> -->
+		<p:separator/>
+		<f:metadata>
+			<f:viewParam name="dammy"/>
+			<f:event listener="#{contatoBean.buscarContatos}"
+				type="preRenderView"></f:event>
+		</f:metadata>
 		<p:messages autoUpdate="true" closable="true" />
+		<h:form>
+			<p:dataTable var="pessoa" paginator="true" rows="8"
+				rowsPerPageTemplate="3,5,8" paginatorPosition="bottom"
+				value="#{contatoBean.pessoas}"
+				emptyMessage="Não existe contatos cadastrados ">
+				<p:column headerText="Id" width="80">
+					<h:outputText value="#{pessoa.id}" />
+				</p:column>
+				<p:column headerText="Nome">
+					<h:outputText value="#{pessoa.nome}" />
+				</p:column>
 
-		<p:dataTable var="pessoa" paginator="true" rows="10" paginatorPosition="bottom">
-			<p:column headerText="Nome">
-				<h:outputText />
-			</p:column>
+				<p:column headerText="Telefone" width="130">
+					<h:outputText value="#{pessoa.telefone}" />
+				</p:column>
 
-			<p:column headerText="Telefone">
-				<h:outputText/>
-			</p:column>
+				<p:column headerText="Email">
+					<h:outputText value="#{pessoa.email}" />
+				</p:column>
 
-			<p:column headerText="Email">
-				<h:outputText />
-			</p:column>
-
-			<p:column headerText="Apelido">
-				<h:outputText  />
-			</p:column>
-		</p:dataTable>
+				<p:column headerText="Apelido">
+					<h:outputText value="#{pessoa.apelido}" />
+				</p:column>
+				<p:column headerText="*" width="80" >
+					<p:button outcome="novoContato" styleClass="btn btn-outline btn-warning" icon="ui-icon-pencil" title="Editar" >
+						<f:param name="contato" value="#{pessoa.id}"/>
+					</p:button>
+					<p:button styleClass=" btn btn-outline btn-danger " icon="ui-icon-trash" title="Excluir"/>
+					
+				</p:column>
+			</p:dataTable>
+		</h:form>
 
 	</ui:define>
 

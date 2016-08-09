@@ -7,7 +7,6 @@
 	min-height: 50px;
 	z-index: 9999;
 	
-	background-color: #dad9d9;
 }
 
 .aw-topbar > img {
@@ -60,4 +59,8 @@
 	.aw-content.is-toggled {
 		margin-left: 0;
 	}
+}
+.navbar-default {
+  background-color: #f8f8f8 !important;
+  border-color: #e7e7e7 !important;
 }

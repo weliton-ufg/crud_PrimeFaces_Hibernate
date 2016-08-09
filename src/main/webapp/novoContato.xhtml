@@ -22,6 +22,8 @@
 		</div> -->
 		<f:metadata>
 		<!-- 	<f:event listener="#{contatoBean.Salvar}" type="preRenderView"></f:event> -->
+			<f:viewParam name="dummy" />
+			<f:viewParam name="contato" value="#{contatoBean.pessoa}"/>
 		</f:metadata>
 		<p:messages autoUpdate="true" closable="true" />
 	
@@ -30,25 +32,25 @@
 
 				<h:form id="formulario">	
 					<p:panelGrid columns="2" style="margin: auto; width: 60%">
-						<p:outputLabel value="Nome" />
-						<p:inputText styleClass="ui-grid-col-12"
+						<p:outputLabel value="Nome" for="nome"/>
+						<p:inputText id="nome" styleClass="ui-grid-col-12"
 							value="#{contatoBean.pessoa.nome}" required="true"
 							requiredMessage="Informe o Nome" />
-						<p:outputLabel value="APelido" />
-						<p:inputText styleClass="ui-grid-col-12"
+						<p:outputLabel value="APelido" for="apelido" />
+						<p:inputText styleClass="ui-grid-col-12" id="apelido"
 							value="#{contatoBean.pessoa.apelido}" />
-						<p:outputLabel value="Telefone" />
-						<p:inputMask mask="(99)99999-9999" styleClass="ui-grid-col-12"
+						<p:outputLabel value="Telefone" for="telefone"/>
+						<p:inputMask mask="(99)99999-9999" styleClass="ui-grid-col-12" id="telefone"
 							value="#{contatoBean.pessoa.telefone}" />
-						<p:outputLabel value="E-mail" />
-						<p:inputText styleClass="ui-grid-col-12"
+						<p:outputLabel value="E-mail" for="email"/>
+						<p:inputText styleClass="ui-grid-col-12" id="email"
 							value="#{contatoBean.pessoa.email}" />
 						<h:inputHidden  />
 						<h:panelGroup>
 							<div align="center">
-								<p:commandButton value="Salvar"
+								<p:commandButton value="Salvar" styleClass="btn btn-outline btn-primary"
 									action="#{contatoBean.Salvar}" update="formulario" />
-								<p:button value="Limpar" style="margin-left:5px" />
+								<p:button value="Limpar" style="margin-left:5px" styleClass="btn btn-outline btn-warning"  />
 							</div>
 						</h:panelGroup>
 					</p:panelGrid>
