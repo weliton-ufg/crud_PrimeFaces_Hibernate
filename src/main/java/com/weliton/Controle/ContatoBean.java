@@ -1,10 +1,10 @@
-package com.weliton.View;
+package com.weliton.Controle;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -15,7 +15,7 @@ import com.weliton.Util.FacesUtil;
 
 
 @Named
-@RequestScoped
+@ViewScoped
 public class ContatoBean implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -44,6 +44,9 @@ public class ContatoBean implements Serializable{
 	
 	public void buscarPorId(){
 		//pessoaDao.buscarPorId(pessoa);
+	}
+	public boolean isEditando(){
+		return pessoa.getId()!=null;
 	}
 	
 	public void Limpar(){

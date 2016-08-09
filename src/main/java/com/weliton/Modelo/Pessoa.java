@@ -1,5 +1,7 @@
 package com.weliton.Modelo;
 
+import java.io.Serializable;
+
 import javax.annotation.Nullable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,8 +10,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="pessoa")
-public class Pessoa {
+public class Pessoa implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private Long id;
 	private String nome;
 	private String apelido;

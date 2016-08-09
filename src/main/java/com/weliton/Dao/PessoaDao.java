@@ -1,5 +1,6 @@
 package com.weliton.Dao;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -8,7 +9,9 @@ import javax.persistence.EntityTransaction;
 
 import com.weliton.Modelo.Pessoa;
 
-public class PessoaDao {
+public class PessoaDao implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	@Inject
 	private EntityManager fabrica;
 	

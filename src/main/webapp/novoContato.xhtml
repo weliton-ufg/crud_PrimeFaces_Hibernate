@@ -4,9 +4,9 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/templates/Layout.xhtml">
-
+	<ui:define name="titulo">#{contatoBean.editando ? 'Edição de Contato': 'Novo Contato'}</ui:define>
 	<ui:define name="content">
-		<h1 class="aw-page-title">Novo Contato</h1>
+		<h1 class="aw-page-title">#{contatoBean.editando ? 'Edição de Contato': 'Novo Contato'}</h1>
 
 
 		<!-- 	<div class="ui-grid ui-grid-responsive">
