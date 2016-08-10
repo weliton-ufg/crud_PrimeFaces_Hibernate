@@ -59,17 +59,18 @@
 					 <p:tooltip id="toolTipEditar" for="btnEditar" value="Editar" showEffect="clip" position="left"/>
                		
       
-					<p:commandButton styleClass=" btn btn-outline btn-danger " id="btnExcluir" process="@this" update=":formprincipal"
-						icon="ui-icon-trash" title="Excluir" action="#{pesquisaContatoBean.excluir}"  >
+					<p:commandButton styleClass=" btn btn-outline btn-danger " id="btnExcluir" process="@this" update="formprincipal" action="#{pesquisaContatoBean.excluir}"
+						icon="ui-icon-trash" title="Excluir" >
 						<f:setPropertyActionListener value="#{pessoa}" target="#{pesquisaContatoBean.pessoaSelecionada}" />	
-						<p:confirm header="Confirmation"  message="Deseja realmente excluir #{pesquisaContatoBean.pessoaSelecionada.nome} ?" icon="ui-icon-alert" />
+					   <p:confirm  header="Confirmation"  icon="ui-icon-alert" message=" Deseja realmente excluir #{pessoa.nome} ?" />
 					</p:commandButton>
 					<p:tooltip id="toolTipExcluir" for="btnExcluir" value="Excluir" showEffect="clip"  position="left"/>
-					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade" id="confirme">
-        				<p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"  />
-       					<p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-    				</p:confirmDialog>					
-		            
+					   
+				    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade"  styleClass="" >
+				        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				    </p:confirmDialog>
+					
 				</p:column>
 			</p:dataTable>
 				

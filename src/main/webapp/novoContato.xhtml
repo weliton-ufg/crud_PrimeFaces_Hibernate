@@ -45,7 +45,14 @@
 						<p:outputLabel value="E-mail" for="email"/>
 						<p:inputText styleClass="ui-grid-col-12" id="email"
 							value="#{novoContatoBean.pessoa.email}" />
-						<h:inputHidden  />
+						<p:outputLabel value="Foto" for="foto"/>
+						
+							<p:fileUpload id="foto" fileUploadListener="#{fileUploadView.handleFileUpload}"
+								mode="advanced" dragDropSupport="true" 
+								sizeLimit="100000" 
+								allowTypes="/(\.|\/)(gif|jpe?g|png)$/" value="#{fileUploadView.imagens}" tyle="border: none !important;" />
+						
+						<h:inputHidden/>
 						<h:panelGroup>
 							<div align="center">
 								<p:commandButton value="Salvar" styleClass="btn btn-outline btn-primary"
