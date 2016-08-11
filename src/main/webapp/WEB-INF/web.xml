@@ -49,7 +49,7 @@
 		<mime-type>application/font-woff2</mime-type>
 	</mime-mapping>
 
-
-
-
+<!-- Mapeamento para salvar imagem -->
+	
+ <!--Fim mapeamento upload imagem  -->
 </web-app>
